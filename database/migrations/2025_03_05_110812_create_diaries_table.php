@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('to_dos', function (Blueprint $table) {
+        Schema::create('diaries', function (Blueprint $table) {
             $table->id();
-            $table->string("content");
-            $table->boolean("completed");
+            $table->string("title", 100);
+            $table->string("body");
+            $table->date("date");
             $table->timestamps();
         });
     }
@@ -24,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('to_dos');
+        Schema::dropIfExists('diaries');
     }
-
-
 };
