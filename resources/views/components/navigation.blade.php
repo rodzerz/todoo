@@ -6,6 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>lohs</h1>
+<header>
+<nav>
+    <ul>
+        <li><a href="/">Sākums</a></li>
+        <li><a href="/todos">Visi uzdevumi</a></li>
+    </ul>
+</nav>
+</header>
+           
 </body>
 </html>

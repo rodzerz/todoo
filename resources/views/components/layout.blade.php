@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>veicamie uzdevumi</title>
+    <title>{{ $title ?? "Uzdevumi un dienasgrāmata" }}</title>
+    <link rel="stylesheet" href="{{ asset("style.css") }}">
 </head>
 <body>
 <x-navigation></x-navigation>
-<h1>veicamie uzdevumi</h1>
-<ul>
-  <?php foreach ($todos as $todo) { ?>
-    <li><a href="/todos/{{ $todo->id }}">{{ $todo->title }}</a></li>
-  <?php } ?>
-</ul>
+{{ $slot }}
 </body>
 </html>
