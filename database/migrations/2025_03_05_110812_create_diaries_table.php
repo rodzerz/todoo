@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('diaries', function (Blueprint $table) {
             $table->id();
             $table->string("title", 100);
+            $table->enum("priority", ["low", "medium", "high"]);
             $table->string("body");
             $table->date("date");
             $table->timestamps();
