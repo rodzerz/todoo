@@ -1,14 +1,15 @@
 
 header ul {
 
-    list-style-type: none;
-    margin: 0;
+    list-style-type: none;       /* Removes default bullets */
+    text-align: center;          /* Center the list horizontally */
+    display: flex;               /* Flexbox layout for horizontal menu */
+    justify-content: center;     /* Center items */
     padding: 0;
-    text-align: center;
   }
 
 header li {
-    display: inline;
+    margin: 0 20px; 
     
 }
 

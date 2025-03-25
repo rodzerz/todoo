@@ -21,4 +21,16 @@ public function show(ToDo $todo) {
       return view('todos.create'); 
   }
 
+  public function store(Request $request)
+  {
+    $validated = $request->validate([
+        "content" => "required|max:255"
+      ]);
+    ToDo::create([
+        "content" => $request->content,
+        "completed" => false
+      ]);
+      return redirect("/todos");
+  
+  }
 }
