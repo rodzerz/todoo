@@ -37,5 +37,32 @@ class DiaryController extends Controller
       return redirect("/diaries");
   
   }
+  public function edit($diaries){
+    $diaries = Diary::find($diaries);
+    return view('diaries.edit', compact('diaries'));
+  }
+  
+
+  public function update(Request $request, Diary $diarie)
+    {
+      $validated = $request->validate([
+        'title' => 'required|string|max:255',  // "content" ir obligāts, tam jābūt tekstam (string) un maksimālais garums 255
+        'body' => 'boolean',  // "completed" ir jābūt boolean tipa vērtībai (true/false)
+        'date' => 'date',
+    ]);
+
+      $diarie->title = $validated["title"];
+      $diarie->body = $validated["body"];
+      $diarie->date = $validated["date"];
+
+      $diarie->save();
+      return redirect("/diaries");
+
+      } 
+      public function destroy( Diary $diarie){
+        $diarie->delete();
+        return redirect("/diaries");
+      }
+      
 }
 

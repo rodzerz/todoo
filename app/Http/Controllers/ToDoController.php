@@ -33,4 +33,32 @@ public function show(ToDo $todo) {
       return redirect("/todos");
   
   }
+
+
+  public function edit($todo){
+    $todo = Todo::find($todo);
+    return view('todos.edit', compact('todo'));
+  }
+  
+
+  public function update(Request $request, ToDo $todo)
+    {
+      $validated = $request->validate([
+        'content' => 'required|string|max:255',  // "content" ir obligāts, tam jābūt tekstam (string) un maksimālais garums 255
+        'completed' => 'boolean',  // "completed" ir jābūt boolean tipa vērtībai (true/false)
+    ]);
+
+      $todo->content = $validated["content"];
+      $todo->completed = $validated["completed"];
+
+      $todo->save();
+      return redirect()->route('todos.index');
+
+      
+    }
+    public function destroy( ToDo $todo){
+      $todo->delete();
+      return redirect("/todos");
+    }
+    
 }
