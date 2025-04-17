@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToDoController;
 use App\Http\Controllers\DiaryController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,3 +32,12 @@ Route::get('/diaries/{diarie}/edit', [DiaryController::class, 'edit'])->name('di
 Route::put('/diaries/{diarie}', [DiaryController::class, 'update']);
 Route::put('/diaries/{diarie}', [DiaryController::class, 'update']);
 Route::delete('/diaries/{diarie}', [DiaryController::class, 'destroy']);
+
+
+
+Route::get('/login', [SessionController::class, "create"])->name("login");
+Route::post('/', [SessionController::class, 'store']);
+Route::post('/logout', [SessionController::class, 'destroy']);
+Route::get('/register', [RegisterController::class, "create"])->middleware("guest");
+Route::post('/register', [RegisterController::class, 'store']);
+
