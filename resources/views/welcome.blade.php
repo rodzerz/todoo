@@ -6,6 +6,17 @@
     <title>Document</title>
 </head>
 <body>
+
+
+<nav>
+@auth
+        <a href="/">Home</a>
+        <a href="/todos">Todos</a>
+        <a href="/diaries">Diaries</a>
+        @endauth
+      
+        
+    </nav>
     <h1>lohs</h1>
     @auth
   <p>Sveiks, {{ Auth::user()->first_name}}</p>

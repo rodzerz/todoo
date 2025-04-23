@@ -7,10 +7,11 @@ use App\models\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Validation\Rules\Password;
 
-use Illuminate\Support\Facades\Todoo;
+
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
             "password" => ["required", "confirmed", Password::min(6)->numbers()->letters()->symbols() ]
           ]);
           $user = User::create($validated);
-          Todoo::login($user);
+          Auth::login($user);
           return redirect("/");
       }
 
